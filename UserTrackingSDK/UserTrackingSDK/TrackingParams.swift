@@ -76,5 +76,27 @@ public class TrackingParams {
     public convenience init(action: String, requestId: String, cid: String) {
         self.init(action: action, requestId: requestId, cid: cid, cuid: nil, customTrackingParams: nil)
     }
+    
+    /// Get a dictionary of all the parameters and their 
+    /// corresponding values that need to be tracked
+    func toDict() -> [String: String] {
+        
+        var dict : [String: String] = [:]
+        dict["action"] = self.action
+        dict["reqid"] = self.requestId
+        dict["cid"] = self.cid
+        
+        if let cuid = self.cuid {
+            dict["cuid"] = cuid
+        }
+        
+        if let customTrackingParams = self.customTrackingParams {
+            // Add items in dictionary customTrackingParams to  dictionary dict
+            customTrackingParams.forEach { (k,v) in dict[k] = v }
+        }
+        
+        return dict ;
+        
+    }
 }
 

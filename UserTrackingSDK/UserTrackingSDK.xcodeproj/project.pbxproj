@@ -11,6 +11,8 @@
 		BD7310F820B41AA6009177EA /* UserTrackingSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7310F720B41AA6009177EA /* UserTrackingSDKTests.swift */; };
 		BD7310FA20B41AA6009177EA /* UserTrackingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7310EC20B41AA6009177EA /* UserTrackingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110320B41ACC009177EA /* TrackingParams.swift */; };
+		BD73110620B41E53009177EA /* UserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110520B41E53009177EA /* UserTracker.swift */; };
+		BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110720B4204E009177EA /* RequestSerializer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 		BD7310F720B41AA6009177EA /* UserTrackingSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrackingSDKTests.swift; sourceTree = "<group>"; };
 		BD7310F920B41AA6009177EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD73110320B41ACC009177EA /* TrackingParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingParams.swift; sourceTree = "<group>"; };
+		BD73110520B41E53009177EA /* UserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTracker.swift; sourceTree = "<group>"; };
+		BD73110720B4204E009177EA /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSerializer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +77,11 @@
 		BD7310EB20B41AA6009177EA /* UserTrackingSDK */ = {
 			isa = PBXGroup;
 			children = (
+				BD73110720B4204E009177EA /* RequestSerializer.swift */,
 				BD7310EC20B41AA6009177EA /* UserTrackingSDK.h */,
 				BD7310ED20B41AA6009177EA /* Info.plist */,
 				BD73110320B41ACC009177EA /* TrackingParams.swift */,
+				BD73110520B41E53009177EA /* UserTracker.swift */,
 			);
 			path = UserTrackingSDK;
 			sourceTree = "<group>";
@@ -203,6 +209,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */,
+				BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */,
+				BD73110620B41E53009177EA /* UserTracker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
