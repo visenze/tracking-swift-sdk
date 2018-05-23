@@ -17,7 +17,7 @@ class UserTracker {
     private static let VISENZE_TRACK_URL = "https://track.visenze.com"
     private static let VISENZE_TRACK_ENDPOINT = "__aq.gif"
     private static let HTTP_COOKIE_FIELD = "Cookie"
-    private static let USER_AGENT = "tracking-swift-sdk/1.0.0"
+    private static let USER_AGENT = "tracking-swift-sdk/0.1.0"
     private static let USER_AGENT_HEADER = "X-Requested-With"
     private static let UID_REQUEST_FORMAT = "uid=%@"
     
