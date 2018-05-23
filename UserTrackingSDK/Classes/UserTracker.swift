@@ -10,7 +10,7 @@ import Foundation
 /**
  The traker for tracking user events
  */
-class UserTracker {
+public class UserTracker {
     
     // MARK: Constants
     private static let DEFAULT_TIMEOUT_INTERVAL = 10.0
