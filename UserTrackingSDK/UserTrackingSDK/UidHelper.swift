@@ -17,20 +17,21 @@ class UidHelper {
     
     /// Retrieve unique device uid and store into userDefaults
     /// this is needed for tracking API to identify various actions
-    /// - returns: unique device uid
+    /// - returns: unique device uid if fail to get returns an empty string
     public static func uniqueDeviceUid() -> String {
+        // Get the uid from local storage
         let storeUid = SettingHelper.getStringSettingProp(propName: UID_KEY)
         
+        // If there is no uid stored in local storage, get the device id 
+        // and store in local storage
         if storeUid == nil || storeUid?.characters.count == 0 {
             let deviceId = UIDevice.current.identifierForVendor?.uuidString;
             
-            // store in the setting
             SettingHelper.setSettingProp(propName: UID_KEY, newValue: deviceId!)
             
-            return deviceId!
+            return deviceId ?? ""
         }
-        
-        return storeUid!
+        return storeUid ?? ""
     }
 }
 
