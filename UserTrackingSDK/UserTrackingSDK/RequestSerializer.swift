@@ -5,6 +5,7 @@
 //  Created by visenze on 4/10/16.
 //  Copyright © 2016 ViSenze. All rights reserved.
 //
+import Foundation
 
 /// Helper class to serialize request parameters and data
 class RequestSerializer {

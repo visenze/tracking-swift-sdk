@@ -5,6 +5,7 @@
 //  Created by visenze on 22/5/18.
 //  Copyright © 2018 ViSenze. All rights reserved.
 //
+import Foundation
 
 /**
  The traker for tracking user events
@@ -68,7 +69,7 @@ class UserTracker {
         // Form request
         let request = NSMutableURLRequest(url: url, cachePolicy: .useProtocolCachePolicy,
                                           timeoutInterval: session.configuration.timeoutIntervalForRequest)
-        let deviceUid = UidHelper.uniqueDeviceUid()
+        let deviceUid = UidGetter.uniqueDeviceUid()
         request.addValue(String(format: UserTracker.UID_REQUEST_FORMAT, deviceUid),
                          forHTTPHeaderField: UserTracker.HTTP_COOKIE_FIELD)
         request.addValue(UserTracker.USER_AGENT , forHTTPHeaderField: UserTracker.USER_AGENT_HEADER )

@@ -8,12 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		BD7310F320B41AA6009177EA /* UserTrackingSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD7310E920B41AA6009177EA /* UserTrackingSDK.framework */; };
-		BD7310F820B41AA6009177EA /* UserTrackingSDKTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7310F720B41AA6009177EA /* UserTrackingSDKTests.swift */; };
 		BD7310FA20B41AA6009177EA /* UserTrackingSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7310EC20B41AA6009177EA /* UserTrackingSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110320B41ACC009177EA /* TrackingParams.swift */; };
 		BD73110620B41E53009177EA /* UserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110520B41E53009177EA /* UserTracker.swift */; };
 		BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110720B4204E009177EA /* RequestSerializer.swift */; };
-		BD73110E20B4FF3B009177EA /* UidHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110D20B4FF3B009177EA /* UidHelper.swift */; };
+		BD73110E20B4FF3B009177EA /* UidGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110D20B4FF3B009177EA /* UidGetter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +30,10 @@
 		BD7310EC20B41AA6009177EA /* UserTrackingSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserTrackingSDK.h; sourceTree = "<group>"; };
 		BD7310ED20B41AA6009177EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD7310F220B41AA6009177EA /* UserTrackingSDKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UserTrackingSDKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BD7310F720B41AA6009177EA /* UserTrackingSDKTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTrackingSDKTests.swift; sourceTree = "<group>"; };
-		BD7310F920B41AA6009177EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD73110320B41ACC009177EA /* TrackingParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingParams.swift; sourceTree = "<group>"; };
 		BD73110520B41E53009177EA /* UserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTracker.swift; sourceTree = "<group>"; };
 		BD73110720B4204E009177EA /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSerializer.swift; sourceTree = "<group>"; };
-		BD73110D20B4FF3B009177EA /* UidHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UidHelper.swift; sourceTree = "<group>"; };
+		BD73110D20B4FF3B009177EA /* UidGetter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UidGetter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				BD7310EB20B41AA6009177EA /* UserTrackingSDK */,
-				BD7310F620B41AA6009177EA /* UserTrackingSDKTests */,
 				BD7310EA20B41AA6009177EA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,18 +80,9 @@
 				BD7310ED20B41AA6009177EA /* Info.plist */,
 				BD73110320B41ACC009177EA /* TrackingParams.swift */,
 				BD73110520B41E53009177EA /* UserTracker.swift */,
-				BD73110D20B4FF3B009177EA /* UidHelper.swift */,
+				BD73110D20B4FF3B009177EA /* UidGetter.swift */,
 			);
 			path = UserTrackingSDK;
-			sourceTree = "<group>";
-		};
-		BD7310F620B41AA6009177EA /* UserTrackingSDKTests */ = {
-			isa = PBXGroup;
-			children = (
-				BD7310F720B41AA6009177EA /* UserTrackingSDKTests.swift */,
-				BD7310F920B41AA6009177EA /* Info.plist */,
-			);
-			path = UserTrackingSDKTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,7 +198,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD73110E20B4FF3B009177EA /* UidHelper.swift in Sources */,
+				BD73110E20B4FF3B009177EA /* UidGetter.swift in Sources */,
 				BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */,
 				BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */,
 				BD73110620B41E53009177EA /* UserTracker.swift in Sources */,
@@ -222,7 +209,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7310F820B41AA6009177EA /* UserTrackingSDKTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
