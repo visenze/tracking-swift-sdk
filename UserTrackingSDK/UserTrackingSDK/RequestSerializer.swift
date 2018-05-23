@@ -7,10 +7,10 @@
 //
 
 /// Helper class to serialize request parameters and data
-public class RequestSerializer {
+class RequestSerializer {
     
     /// Generate the url with query string and escape parameter properly
-    public static func generateRequestUrl( baseUrl: String , apiEndPoint: String , trackingParams : TrackingParams) -> String {
+    static func generateRequestUrl( baseUrl: String , apiEndPoint: String , trackingParams : TrackingParams) -> String {
         let queryString = RequestSerializer.generateQueryString(trackingParams.toDict())
         return "\(baseUrl)/\(apiEndPoint)?\(queryString)"
     }

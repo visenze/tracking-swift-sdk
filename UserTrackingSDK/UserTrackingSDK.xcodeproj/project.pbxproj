@@ -13,6 +13,7 @@
 		BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110320B41ACC009177EA /* TrackingParams.swift */; };
 		BD73110620B41E53009177EA /* UserTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110520B41E53009177EA /* UserTracker.swift */; };
 		BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110720B4204E009177EA /* RequestSerializer.swift */; };
+		BD73110E20B4FF3B009177EA /* UidHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD73110D20B4FF3B009177EA /* UidHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		BD73110320B41ACC009177EA /* TrackingParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackingParams.swift; sourceTree = "<group>"; };
 		BD73110520B41E53009177EA /* UserTracker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTracker.swift; sourceTree = "<group>"; };
 		BD73110720B4204E009177EA /* RequestSerializer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestSerializer.swift; sourceTree = "<group>"; };
+		BD73110D20B4FF3B009177EA /* UidHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UidHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +84,7 @@
 				BD7310ED20B41AA6009177EA /* Info.plist */,
 				BD73110320B41ACC009177EA /* TrackingParams.swift */,
 				BD73110520B41E53009177EA /* UserTracker.swift */,
+				BD73110D20B4FF3B009177EA /* UidHelper.swift */,
 			);
 			path = UserTrackingSDK;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD73110E20B4FF3B009177EA /* UidHelper.swift in Sources */,
 				BD73110420B41ACC009177EA /* TrackingParams.swift in Sources */,
 				BD73110820B4204E009177EA /* RequestSerializer.swift in Sources */,
 				BD73110620B41E53009177EA /* UserTracker.swift in Sources */,
@@ -418,6 +422,7 @@
 				BD7310FF20B41AA6009177EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BD73110020B41AA6009177EA /* Build configuration list for PBXNativeTarget "UserTrackingSDKTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				BD73110220B41AA6009177EA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
