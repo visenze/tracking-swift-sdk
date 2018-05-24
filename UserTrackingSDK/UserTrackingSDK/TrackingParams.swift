@@ -20,11 +20,6 @@ public class TrackingParams {
     /// This is a required parameter
     private let requestId: String
     
-    /// An identify assigned by visenze for each e-commerce provider
-    /// e.g. app key
-    /// This is a required parameter
-    private let cid: String
-    
     /// User ID generated from your platform
     /// e.g. account ID of the user
     private let cuid: String?
@@ -37,13 +32,11 @@ public class TrackingParams {
     /// - parameter action: The action of the user event you want to track
     ///                     e.g. "add-to-wish-list", "view", "click"
     /// - parameter requestId: The request id of the current search provided by ViSenze search service
-    /// - parameter cid: An identify assigned by visenze for each e-commerce provider. e.g. app key
     /// - parameter cuid: User ID generated from your platform. e.g. account ID of the user
     /// - parameter customTrackingParams: Other custom parameters that you want to track
-    public init(action: String, requestId: String, cid: String, cuid: String?, customTrackingParams: [String: String]?) {
+    public init(action: String, requestId: String, cuid: String?, customTrackingParams: [String: String]?) {
         self.action = action
         self.requestId = requestId
-        self.cid = cid
         self.cuid = cuid
         self.customTrackingParams = customTrackingParams
     }
@@ -52,39 +45,36 @@ public class TrackingParams {
     /// - parameter action: The action of the user event you want to track
     ///                     e.g. "add-to-wish-list", "view", "click"
     /// - parameter requestId: The request id of the current search provided by ViSenze search service
-    /// - parameter cid: An identify assigned by visenze for each e-commerce provider. e.g. app key
     /// - parameter cuid: User ID generated from your platform. e.g. account ID of the user
-    public convenience init(action: String, requestId: String, cid: String, cuid: String) {
-        self.init(action: action, requestId: requestId, cid: cid, cuid: cuid, customTrackingParams: nil)
+    public convenience init(action: String, requestId: String, cuid: String) {
+        self.init(action: action, requestId: requestId, cuid: cuid, customTrackingParams: nil)
     }
     
     /// Initialize track parameters
     /// - parameter action: The action of the user event you want to track
     ///                     e.g. "add-to-wish-list", "view", "click"
     /// - parameter requestId: The request id of the current search provided by ViSenze search service
-    /// - parameter cid: An identify assigned by visenze for each e-commerce provider. e.g. app key
     /// - parameter customTrackingParams: Other custom parameters that you want to track
-    public convenience init(action: String, requestId: String, cid: String, customTrackingParams: [String: String]) {
-        self.init(action: action, requestId: requestId, cid: cid, cuid: nil, customTrackingParams: customTrackingParams)
+    public convenience init(action: String, requestId: String, customTrackingParams: [String: String]) {
+        self.init(action: action, requestId: requestId, cuid: nil, customTrackingParams: customTrackingParams)
     }
     
     /// Initialize track parameters
     /// - parameter action: The action of the user event you want to track
     ///                     e.g. "add-to-wish-list", "view", "click"
     /// - parameter requestId: The request id of the current search provided by ViSenze search service
-    /// - parameter cid: An identify assigned by visenze for each e-commerce provider. e.g. app key
-    public convenience init(action: String, requestId: String, cid: String) {
-        self.init(action: action, requestId: requestId, cid: cid, cuid: nil, customTrackingParams: nil)
+    public convenience init(action: String, requestId: String) {
+        self.init(action: action, requestId: requestId, cuid: nil, customTrackingParams: nil)
     }
     
-    /// Get a dictionary of all the parameters and their 
+    /// Get a dictionary of all the parameters and their
     /// corresponding values that need to be tracked
-    func toDict() -> [String: String] {
+    func toDict(with cid: String) -> [String: String] {
         
         var dict : [String: String] = [:]
         dict["action"] = self.action
         dict["reqid"] = self.requestId
-        dict["cid"] = self.cid
+        dict["cid"] = cid
         
         if let cuid = self.cuid {
             dict["cuid"] = cuid
@@ -95,7 +85,7 @@ public class TrackingParams {
             customTrackingParams.forEach { (k,v) in dict[k] = v }
         }
         
-        return dict ;
+        return dict;
         
     }
 }

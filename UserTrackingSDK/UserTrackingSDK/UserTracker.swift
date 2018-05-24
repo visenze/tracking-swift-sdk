@@ -10,7 +10,7 @@ import Foundation
 /**
  The traker for tracking user events
  */
-class UserTracker {
+public class UserTracker {
     
     // MARK: Constants
     private static let DEFAULT_TIMEOUT_INTERVAL = 10.0
@@ -24,11 +24,17 @@ class UserTracker {
     // MARK: Properties
     private let session: URLSession
     
+    /// An identify assigned by visenze for each e-commerce provider
+    /// e.g. app key
+    private let cid: String
+    
     /// Init a user tracker for tracking user event
     /// - parameter timeoutInterval: the value for timeout. This field is optional.
     ///                              If the timeout value is not specified, it will be the default value 10.0
-    public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL) {
+    /// - parameter appKey: An identify assigned by visenze for each e-commerce provider. e.g. app key
+    public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL, appKey: String) {
         self.session = UserTracker.configSession(with: timeoutInterval)
+        self.cid = appKey
     }
     
     /// Configure the session for sending tracking request
@@ -58,9 +64,9 @@ class UserTracker {
                       handler:  ( (_ success: Bool, Error?) -> Void )?) -> Void {
         // Get request URL
         let requestUrl = RequestSerializer.generateRequestUrl(
-                                                            baseUrl: UserTracker.VISENZE_TRACK_URL,
-                                                            apiEndPoint: UserTracker.VISENZE_TRACK_ENDPOINT,
-                                                            trackingParams: params)
+            baseUrl: UserTracker.VISENZE_TRACK_URL,
+            apiEndPoint: UserTracker.VISENZE_TRACK_ENDPOINT,
+            trackingParams: params, cid: self.cid)
         
         guard let url = URL(string: requestUrl) else {
             fatalError("Invalid request URL")
@@ -73,7 +79,7 @@ class UserTracker {
         request.addValue(String(format: UserTracker.UID_REQUEST_FORMAT, deviceUid),
                          forHTTPHeaderField: UserTracker.HTTP_COOKIE_FIELD)
         request.addValue(UserTracker.USER_AGENT , forHTTPHeaderField: UserTracker.USER_AGENT_HEADER )
-
+        
         // Send request
         session.dataTask(with: request as URLRequest, completionHandler:{
             (data, response, error) in

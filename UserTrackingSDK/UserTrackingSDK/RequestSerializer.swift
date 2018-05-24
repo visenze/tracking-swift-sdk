@@ -11,8 +11,8 @@ import Foundation
 class RequestSerializer {
     
     /// Generate the url with query string and escape parameter properly
-    static func generateRequestUrl( baseUrl: String , apiEndPoint: String , trackingParams : TrackingParams) -> String {
-        let queryString = RequestSerializer.generateQueryString(trackingParams.toDict())
+    static func generateRequestUrl( baseUrl: String , apiEndPoint: String , trackingParams : TrackingParams, cid: String) -> String {
+        let queryString = RequestSerializer.generateQueryString(trackingParams.toDict(with: cid))
         return "\(baseUrl)/\(apiEndPoint)?\(queryString)"
     }
     
@@ -72,6 +72,6 @@ class RequestSerializer {
         
         return string.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? string
     }
-
-
+    
+    
 }
