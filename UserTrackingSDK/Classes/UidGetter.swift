@@ -22,7 +22,7 @@ class UidGetter {
         // Get the uid from local storage
         let storeUid = SettingHelper.getStringSettingProp(propName: UID_KEY)
         
-        // If there is no uid stored in local storage, get the device id 
+        // If there is no uid stored in local storage, get the device id
         // and store in local storage
         if storeUid == nil || storeUid?.characters.count == 0 {
             let deviceId = UIDevice.current.identifierForVendor?.uuidString;
