@@ -28,6 +28,12 @@ public class UserTracker {
     /// e.g. app key
     private let cid: String
     
+    /// The customize track URL specified by user
+    private var trackUrl: String?
+    
+    /// The customize track endpoint specified by user
+    private var trackEndpoint: String?
+    
     /// Init a user tracker for tracking user event
     /// - parameter timeoutInterval: the value for timeout. This field is optional.
     ///                              If the timeout value is not specified, it will be the default value 10.0
@@ -35,6 +41,20 @@ public class UserTracker {
     public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL, appKey: String) {
         self.session = UserTracker.configSession(with: timeoutInterval)
         self.cid = appKey
+    }
+    
+    /// Init a user tracker for tracking user event
+    /// - parameter timeoutInterval: the value for timeout. This field is optional.
+    ///                              If the timeout value is not specified, it will be the default value 10.0
+    /// - parameter appKey: An identify assigned by visenze for each e-commerce provider. e.g. app key
+    /// - parameter trackUrl: The URL to which the tracking data is sent
+    /// - parameter trackEndpoint: The endpoint to which the traking data is sent
+    public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL,
+                appKey: String, trackingUrl: String, trackEndpoint: String) {
+        self.session = UserTracker.configSession(with: timeoutInterval)
+        self.cid = appKey
+        self.trackEndpoint = trackEndpoint
+        self.trackUrl = trackingUrl
     }
     
     /// Configure the session for sending tracking request
@@ -63,10 +83,18 @@ public class UserTracker {
     public func track(params: TrackingParams,
                       handler:  ( (_ success: Bool, Error?) -> Void )?) -> Void {
         // Get request URL
-        let requestUrl = RequestSerializer.generateRequestUrl(
-            baseUrl: UserTracker.VISENZE_TRACK_URL,
-            apiEndPoint: UserTracker.VISENZE_TRACK_ENDPOINT,
-            trackingParams: params, cid: self.cid)
+        var requestUrl: String
+        if let trackUrl = trackUrl, let trackEndpoint = trackEndpoint {
+            requestUrl = RequestSerializer.generateRequestUrl(
+                baseUrl: trackUrl,
+                apiEndPoint: trackEndpoint,
+                trackingParams: params, cid: self.cid)
+        } else {
+            requestUrl = RequestSerializer.generateRequestUrl(
+                baseUrl: UserTracker.VISENZE_TRACK_URL,
+                apiEndPoint: UserTracker.VISENZE_TRACK_ENDPOINT,
+                trackingParams: params, cid: self.cid)
+        }
         
         guard let url = URL(string: requestUrl) else {
             fatalError("Invalid request URL")
