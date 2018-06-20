@@ -69,12 +69,11 @@ public class TrackingParams {
     
     /// Get a dictionary of all the parameters and their
     /// corresponding values that need to be tracked
-    func toDict(with cid: String) -> [String: String] {
+    func toDict(with initParams: [String: String]) -> [String: String] {
         
         var dict : [String: String] = [:]
         dict["action"] = self.action
         dict["reqid"] = self.requestId
-        dict["cid"] = cid
         
         if let cuid = self.cuid {
             dict["cuid"] = cuid
@@ -84,6 +83,9 @@ public class TrackingParams {
             // Add items in dictionary customTrackingParams to  dictionary dict
             customTrackingParams.forEach { (k,v) in dict[k] = v }
         }
+        
+        // Add init params to dictionary
+        initParams.forEach { (k,v) in dict[k] = v }
         
         return dict;
         

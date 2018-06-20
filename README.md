@@ -8,16 +8,15 @@ ViSearch User Action Tracking SDK (Swift)
 
 Example:
 ```swift
+// Initialize a new UserEventTracker with your app key to track this action
+let appKey = "Your_app_key"
+let userEventTracker = UserTracker(appKey: appKey)
+userEventTracker.track(params: trackingParams, handler: yourCompletionHandler)
 
   // Wrap the information you want to track into a TrackingParams object
   let action = "purchase"
   let requestId = "Your_requestid"
   let trackingParams = TrackingParams(action: action, requestId: requestId)
-
-  // Initialize a new UserEventTracker with your app key to track this action
-  let appKey = "Your_app_key"
-  let userEventTracker = UserTracker(appKey: appKey)
-  userEventTracker.track(params: trackingParams, handler: yourCompletionHandler)
 
 ```
 

@@ -24,9 +24,8 @@ public class UserTracker {
     // MARK: Properties
     private let session: URLSession
     
-    /// An identify assigned by visenze for each e-commerce provider
-    /// e.g. app key
-    private let cid: String
+    /// The initial parameters
+    private let initParams: [String: String]
     
     /// The customize track URL specified by user
     private var trackUrl: String?
@@ -37,22 +36,28 @@ public class UserTracker {
     /// Init a user tracker for tracking user event
     /// - parameter timeoutInterval: the value for timeout. This field is optional.
     ///                              If the timeout value is not specified, it will be the default value 10.0
-    /// - parameter appKey: An identify assigned by visenze for each e-commerce provider. e.g. app key
-    public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL, appKey: String) {
+    /// - parameter initParams: The initial parameters and it must contain at least one mapping
+    public init?(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL, initParams: [String: String]) {
+        if(initParams.count < 1) {
+            return nil
+        }
         self.session = UserTracker.configSession(with: timeoutInterval)
-        self.cid = appKey
+        self.initParams = initParams
     }
     
     /// Init a user tracker for tracking user event
     /// - parameter timeoutInterval: the value for timeout. This field is optional.
     ///                              If the timeout value is not specified, it will be the default value 10.0
-    /// - parameter appKey: An identify assigned by visenze for each e-commerce provider. e.g. app key
+    /// - parameter initParams: The initial parameters and it must contain at least one mapping
     /// - parameter trackUrl: The URL to which the tracking data is sent
     /// - parameter trackEndpoint: The endpoint to which the traking data is sent
-    public init(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL,
-                appKey: String, trackingUrl: String, trackEndpoint: String) {
+    public init?(timeoutInterval: TimeInterval = UserTracker.DEFAULT_TIMEOUT_INTERVAL,
+                initParams: [String: String], trackingUrl: String, trackEndpoint: String) {
+        if(initParams.count < 1) {
+            return nil
+        }
         self.session = UserTracker.configSession(with: timeoutInterval)
-        self.cid = appKey
+        self.initParams = initParams
         self.trackEndpoint = trackEndpoint
         self.trackUrl = trackingUrl
     }
@@ -88,12 +93,12 @@ public class UserTracker {
             requestUrl = RequestSerializer.generateRequestUrl(
                 baseUrl: trackUrl,
                 apiEndPoint: trackEndpoint,
-                trackingParams: params, cid: self.cid)
+                trackingParams: params, initParams: self.initParams)
         } else {
             requestUrl = RequestSerializer.generateRequestUrl(
                 baseUrl: UserTracker.VISENZE_TRACK_URL,
                 apiEndPoint: UserTracker.VISENZE_TRACK_ENDPOINT,
-                trackingParams: params, cid: self.cid)
+                trackingParams: params, initParams: self.initParams)
         }
         
         guard let url = URL(string: requestUrl) else {
