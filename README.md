@@ -2,23 +2,23 @@
 ViSearch User Action Tracking SDK (Swift)
 
 ## How to use this SDK
-1. Create a `UserEventTracker` object
+1. Create a `UserTracker` object
 2. Create a `TrackingParams` object containing tracking information
-3. Use the `UserEventTracker` object to track the `TrackingParams` object
+3. Use the `UserTracker` object to track the `TrackingParams` object
 
 Example:
 ```swift
-// Initialize a new UserEventTracker with your initParams to track this action
+// Initialize a new UserTracker with your initParams to track this action
 // For ViSearch please use the key "cid" with value app key
 // For UGC please use the key "campaign_id" with value campaign ID
-let initParams: [String: String] = ["cid": "xxx"]
-let userEventTracker = UserTracker(initParams: initParams)
-userEventTracker.track(params: trackingParams, handler: yourCompletionHandler)
+let initParams: [String: String] = ["cid": "xxx"] // or "campaign_id"
+let userTracker = UserTracker(initParams: initParams)
 
-  // Wrap the information you want to track into a TrackingParams object
-  let action = "purchase"
-  let requestId = "Your_requestid"
-  let trackingParams = TrackingParams(action: action, requestId: requestId)
+// Wrap the information you want to track into a TrackingParams object
+let action = "purchase"
+let requestId = "Your_requestid"
+let trackingParams = TrackingParams(action: action, requestId: requestId)
+userTracker.track(params: trackingParams, handler: yourCompletionHandler)
 
 ```
 
@@ -45,7 +45,7 @@ cuid: "Your_cuid", customTrackingParams: customParams)
 ```
 - Don't include space in the name of the key for you custom tracking parameters in `TrackingParams` class.
 
-### Class `UserEventTracker`
+### Class `UserTracker`
 By using the alternative constructors, you can set your own
 1. endpoint for tracking. If it is not specified, the default endpoint http://track.visenze.com/__aq.gif will be used.
 2. the timeout value. If it is not specified, the default value 10 second will be used.
